@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MapShark.Benchmark/MapShark.Benchmark.csproj" />
+  <Project Path="MapShark/MapShark.csproj" />
+</Solution>
