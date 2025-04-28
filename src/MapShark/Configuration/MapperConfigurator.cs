@@ -8,6 +8,18 @@ namespace MapShark.Configuration
     {
         private readonly Dictionary<string, string> _mappings = new Dictionary<string, string>();
 
+        /// <summary>
+        /// Specifies a mapping from a source property to a destination property.
+        /// </summary>
+        /// <param name="sourceSelector">
+        /// An expression selecting the source property of <typeparamref name="TSource"/> to map from.
+        /// </param>
+        /// <param name="destinationSelector">
+        /// An expression selecting the destination property of <typeparamref name="TDestination"/> to map to.
+        /// </param>
+        /// <returns>
+        /// The same <see cref="MapperConfigurator{TSource,TDestination}"/> instance to allow fluent chaining of mappings.
+        /// </returns>
         public MapperConfigurator<TSource, TDestination> Map(Expression<Func<TSource, object>> sourceSelector, Expression<Func<TDestination, object>> destinationSelector)
         {
             string sourcePropertyName = GetPropertyName(sourceSelector);
