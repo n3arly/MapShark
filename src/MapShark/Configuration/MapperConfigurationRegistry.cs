@@ -41,6 +41,17 @@ namespace MapShark.Configuration
             }
         }
 
+        /// <summary>
+        /// Begins and registers a mapping configuration between the specified
+        /// <typeparamref name="TSource"/> and <typeparamref name="TDestination"/> types,
+        /// returning a <see cref="MapperConfigurator{TSource,TDestination}"/> for defining mapping rules.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source object to map from.</typeparam>
+        /// <typeparam name="TDestination">The type of the destination object to map to.</typeparam>
+        /// <returns>
+        /// A <see cref="MapperConfigurator{TSource,TDestination}"/> instance that allows you
+        /// to specify property-to-property mappings between the source and destination types.
+        /// </returns>
         public static MapperConfigurator<TSource, TDestination> For<TSource, TDestination>()
         {
             MapperConfigurator<TSource, TDestination> config = new MapperConfigurator<TSource, TDestination>();
