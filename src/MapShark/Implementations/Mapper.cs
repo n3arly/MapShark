@@ -15,8 +15,7 @@ namespace MapShark.Implementations
 
         public TDestination Map<TSource, TDestination>(TSource source)
         {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
+            if (source == null) throw new ArgumentNullException(nameof(source));
 
             (Type, Type) key = (typeof(TSource), typeof(TDestination));
             if (!_cache.TryGetValue(key, out object mapFuncObject))
@@ -27,6 +26,18 @@ namespace MapShark.Implementations
             }
             Func<TSource, TDestination> mapDelegate = (Func<TSource, TDestination>)mapFuncObject;
             return mapDelegate(source);
+        }
+
+        public List<TDestination> MapCollection<TSource, TDestination>(IEnumerable<TSource> source)
+        {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+
+            List<TDestination> result = new List<TDestination>();
+
+            foreach (TSource item in source)
+                result.Add(Map<TSource, TDestination>(item));
+
+            return result;
         }
 
         private static Func<TSource, TDestination> CreateMapFunc<TSource, TDestination>()
