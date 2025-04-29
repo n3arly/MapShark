@@ -28,14 +28,32 @@ namespace MapShark.Implementations
             return mapDelegate(source);
         }
 
-        public List<TDestination> MapCollection<TSource, TDestination>(IEnumerable<TSource> source)
+        public List<TDestination> Map<TSource, TDestination>(IEnumerable<TSource> source)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
 
-            List<TDestination> result = new List<TDestination>();
+            Func<TSource, TDestination> mapFunc = (Func<TSource, TDestination>)_cache.GetOrAdd((typeof(TSource), typeof(TDestination)), _ => CreateMapFunc<TSource, TDestination>());
 
-            foreach (TSource item in source)
-                result.Add(Map<TSource, TDestination>(item));
+            int capacity = 0;
+            if (source is ICollection<TSource> col)
+                capacity = col.Count;
+
+            List<TDestination> result = capacity > 0 ? new List<TDestination>(capacity) : new List<TDestination>();
+
+            if (source is IList<TSource> list)
+            {
+                for (int i = 0, n = list.Count; i < n; i++)
+                {
+                    result.Add(mapFunc(list[i]));
+                }
+            }
+            else
+            {
+                foreach (TSource item in source)
+                {
+                    result.Add(mapFunc(item));
+                }
+            }
 
             return result;
         }

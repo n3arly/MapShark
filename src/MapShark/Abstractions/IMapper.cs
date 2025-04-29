@@ -16,7 +16,7 @@ namespace MapShark.Abstractions
         /// the <paramref name="source"/> object.
         /// </returns>
         TDestination Map<TSource, TDestination>(TSource source);
-        
+
         /// <summary>
         /// Creates a new <see cref="List{TDestination}"/> instance by mapping each element of the
         /// specified <paramref name="source"/> collection of type <typeparamref name="TSource"/>.
@@ -28,6 +28,6 @@ namespace MapShark.Abstractions
         /// A <see cref="List{TDestination}"/> containing the mapped values from
         /// the <paramref name="source"/> collection.
         /// </returns>
-        List<TDestination> MapCollection<TSource, TDestination>(IEnumerable<TSource> source);
+        List<TDestination> Map<TSource, TDestination>(IEnumerable<TSource> source);
     }
 }
