@@ -11,16 +11,16 @@ namespace MapShark.Configuration
         /// <summary>
         /// Specifies a mapping from a source property to a destination property.
         /// </summary>
-        /// <param name="sourceSelector">
-        /// An expression selecting the source property of <typeparamref name="TSource"/> to map from.
-        /// </param>
         /// <param name="destinationSelector">
         /// An expression selecting the destination property of <typeparamref name="TDestination"/> to map to.
+        /// </param>
+        /// <param name="sourceSelector">
+        /// An expression selecting the source property of <typeparamref name="TSource"/> to map from.
         /// </param>
         /// <returns>
         /// The same <see cref="MapperConfigurator{TSource,TDestination}"/> instance to allow fluent chaining of mappings.
         /// </returns>
-        public MapperConfigurator<TSource, TDestination> Map(Expression<Func<TSource, object>> sourceSelector, Expression<Func<TDestination, object>> destinationSelector)
+        public MapperConfigurator<TSource, TDestination> Map(Expression<Func<TDestination, object>> destinationSelector, Expression<Func<TSource, object>> sourceSelector)
         {
             string sourcePropertyName = GetPropertyName(sourceSelector);
             string destinationPropertyName = GetPropertyName(destinationSelector);
