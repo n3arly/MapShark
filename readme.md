@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/vpre/MapShark.svg?label=NuGet)](https://www.nuget.org/packages/MapShark/)
+
 # What is MapShark?
 
 MapShark is a mapping library that maps one object to another object simply and quickly.
@@ -40,6 +42,39 @@ public class ExampleController : ControllerBase
         };
 
         return Ok(_mapper.Map<Source, Destination>(source));
+    }
+}
+```
+
+### Collection Mapping
+
+MapShark allows mapping of **IEnumerable** based objects.
+
+```csharp
+using MapShark.Abstractions;
+
+[ApiController]
+[Route("[controller]")]
+public class ExampleController : ControllerBase
+{
+    private readonly IMapper _mapper;
+    public ExampleController(IMapper mapper)
+    {
+        _mapper = mapper;
+    }
+
+    [HttpGet]
+    public ActionResult Map()
+    {
+        List<Source> sources = new()
+        {
+            new Source()
+            {
+                Id = 1,
+                Name = "Name",
+            }
+        };
+        return Ok(_mapper.Map<Source, Destination>(sources));
     }
 }
 ```
