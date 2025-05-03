@@ -24,7 +24,7 @@ namespace MapShark.Configuration
         {
             string sourcePropertyName = GetPropertyName(sourceSelector);
             string destinationPropertyName = GetPropertyName(destinationSelector);
-            _mappings[sourcePropertyName] = destinationPropertyName;
+            _mappings[destinationPropertyName] = sourcePropertyName;
             return this;
         }
 
