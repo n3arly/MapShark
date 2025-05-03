@@ -10,4 +10,26 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\icon.png" Pack="true" PackagePath="" />
+    <None Include="..\..\readme.md" Pack="true" PackagePath="" Visible="False" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>MapShark</PackageId>
+    <Version>1.0.2</Version>
+
+    <Authors>Talha Ozer</Authors>
+    <Description>The world's simplest and fastest mapper.</Description>
+    <PackageTags>mapper;mapping;object-mapper;generic-mapping;high-performance</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    
+    <RepositoryUrl>https://github.com/n3arly/MapShark</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>© 2025 Talha Ozer</Copyright>
+  </PropertyGroup>
+
 </Project>
